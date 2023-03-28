@@ -20,6 +20,7 @@ class Example(QWidget):
         btn.setToolTip('This is a <b>QPushButton</b> widget')
         btn.resize(btn.sizeHint())
         btn.move(50, 50)
+        # btn.setGeometry()
 
         self.setGeometry(300, 300, 300, 200)
         self.setWindowTitle('Tooltips')
