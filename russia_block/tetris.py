@@ -12,11 +12,12 @@ class Tetris(QMainWindow):
 
     def initUI(self):
         '''initiates application UI'''
-
+        # 游戏面板board
         self.tboard = Board(self)
         self.setCentralWidget(self.tboard)
 
         self.statusbar = self.statusBar()
+        # msg2Statusbar是一个信号 这个信号是tboard的一个属性
         self.tboard.msg2Statusbar[str].connect(self.statusbar.showMessage)
 
         self.tboard.start()

@@ -10,6 +10,7 @@ class Board(QFrame):
 
     BoardWidth = 10
     BoardHeight = 22
+    # todo 修改为300
     Speed = 300
 
     def __init__(self, parent):
@@ -67,6 +68,7 @@ class Board(QFrame):
         self.msg2Statusbar.emit(str(self.numLinesRemoved))
 
         self.newPiece()
+        # 你可以将self想象成为一个对象
         self.timer.start(Board.Speed, self)
 
     def pause(self):
@@ -162,6 +164,8 @@ class Board(QFrame):
                 self.oneLineDown()
 
         else:
+            # 调用父类处理事件
+            # super()的第一个参数是当前类的名字，第二个参数是当前类的对象
             super(Board, self).timerEvent(event)
 
     def clearBoard(self):
@@ -186,7 +190,7 @@ class Board(QFrame):
 
     def oneLineDown(self):
         '''goes one line down with a shape'''
-
+        # LineDowd的时候有时候不能移动了，就要丢弃
         if not self.tryMove(self.curPiece, self.curX, self.curY - 1):
             self.pieceDropped()
 
@@ -235,13 +239,15 @@ class Board(QFrame):
 
             self.isWaitingAfterLine = True
             self.curPiece.setShape(Tetrominoe.NoShape)
+            # 真特么坑啊，这边会触发事件的执行
             self.update()
 
     def newPiece(self):
         '''creates a new shape'''
-
+        # todo：下面这两行代码可以优化
         self.curPiece = Shape()
         self.curPiece.setRandomShape()
+        # //整除
         self.curX = Board.BoardWidth // 2 + 1
         self.curY = Board.BoardHeight - 1 + self.curPiece.minY()
 

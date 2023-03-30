@@ -3,6 +3,7 @@ import random
 
 
 class Shape(object):
+    # 形状记录表
     coordsTable = (
         ((0, 0), (0, 0), (0, 0), (0, 0)),
         ((0, -1), (0, 0), (-1, 0), (-1, 1)),
@@ -26,6 +27,7 @@ class Shape(object):
 
         return self.pieceShape
 
+    # 将`table`中的坐标值分别赋给`self.coords`中的四组二维坐标，以此来表示当前方块的形状。
     def setShape(self, shape):
         '''sets a shape'''
 
