@@ -18,8 +18,10 @@ class Tetris(QMainWindow):
 
         self.statusbar = self.statusBar()
         # msg2Statusbar是一个信号 这个信号是tboard的一个属性
+        # 事件响应函数绑定
         self.tboard.msg2Statusbar[str].connect(self.statusbar.showMessage)
 
+        # 游戏逻辑的启动入口
         self.tboard.start()
 
         self.resize(180, 380)

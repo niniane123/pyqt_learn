@@ -64,7 +64,7 @@ class Board(QFrame):
         self.isWaitingAfterLine = False
         self.numLinesRemoved = 0
         self.clearBoard()
-
+        # 发送清零信号 信号的接收方已经和发送方解耦
         self.msg2Statusbar.emit(str(self.numLinesRemoved))
 
         self.newPiece()
