@@ -27,8 +27,8 @@ class Example(QWidget):
         self.setWindowTitle('QProgressBar')
         self.show()
 
+    # 定时器执行的方法 100ms执行一次
     def timerEvent(self, e):
-
         if self.step >= 100:
             self.timer.stop()
             self.btn.setText('Finished')
@@ -39,9 +39,11 @@ class Example(QWidget):
 
     def doAction(self):
 
+        # 点击按钮可以停止进度条的进度
         if self.timer.isActive():
             self.timer.stop()
             self.btn.setText('Start')
+        # 启动定时器
         else:
             self.timer.start(100, self)
             self.btn.setText('Stop')
